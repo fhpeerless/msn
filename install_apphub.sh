@@ -25,8 +25,9 @@ cd $DIR
 touch 123.txt
 sleep 3
 
-sudo curl -o apphub-linux-amd64.tar.gz https://assets.coreservice.io/public/package/60/app-market-gaga-pro/1.0.4/app-market-gaga-pro-1_0_4.tar.gz && tar -zxf apphub-linux-amd64.tar.gz && rm -f apphub-linux-amd64.tar.gz && cd ./apphub-linux-amd64
+sudo curl -o /aanode/apphub-linux-amd64.tar.gz https://assets.coreservice.io/public/package/60/app-market-gaga-pro/1.0.4/app-market-gaga-pro-1_0_4.tar.gz & chmod -R 777 /aanode & tar -zxf /aanode/apphub-linux-amd64.tar.gz && rm -f /aanode/apphub-linux-amd64.tar.gz && cd /aanode/apphub-linux-amd64
 
+#接下来的命令 tar -zxf apphub-linux-amd64.tar.gz 会解压该文件，解压后的文件或目录也会在当前工作目录中创建
 
 sleep 3
 cd /aanode/apphub-linux-amd64
