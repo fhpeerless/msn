@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt-get update
+sudo apt-get update -y && sudo apt-get -y install curl tar ca-certificates
 DIR="/aanode"
 # 创建文件夹
 if [ ! -d "$DIR" ]; then
@@ -11,13 +11,16 @@ else
 fi
 sleep 3
 chmod -R 777 $DIR
-chmod -R 777 /aanode
-sudo apt-get update -y && sudo apt-get -y install curl tar ca-certificates
+
 
 cd $DIR
 touch 123.txt
-sleep 3  
-sudo curl -o /aanode/apphub-linux-amd64.tar.gz https://assets.coreservice.io/public/package/60/app-market-gaga-pro/1.0.4/app-market-gaga-pro-1_0_4.tar.gz & chmod -R 777 /aanode & tar -zxf /aanode/apphub-linux-amd64.tar.gz && rm -f /aanode/apphub-linux-amd64.tar.gz && cd /aanode/apphub-linux-amd64
+sleep 3
+sudo curl -o /aanode/apphub-linux-amd64.tar.gz https://assets.coreservice.io/public/package/60/app-market-gaga-pro/1.0.4/app-market-gaga-pro-1_0_4.tar.gz
+chmod -R 777 /aanode
+tar -zxf /aanode/apphub-linux-amd64.tar.gz
+rm -f /aanode/apphub-linux-amd64.tar.gz
+cd /aanode/apphub-linux-amd64
 
 #接下来的命令 tar -zxf apphub-linux-amd64.tar.gz 会解压该文件，解压后的文件或目录也会在当前工作目录中创建
 
@@ -30,13 +33,7 @@ sudo curl -o check_apphub.sh "http://note.youdao.com/yws/api/personal/file/WEB56
 # 赋予文件夹读写权限
 # 对所有用户赋予读写执行权限
 chmod -R 777 $DIR
-sudo chmod +x /aanode/apphub-linux-amd64
-sudo chmod +x $DIR
-sudo chmod +x /aanode/apphub-linux-amd64/apphub
 sudo chmod +x /aanode/apphub-linux-amd64/check_apphub.sh
-sudo chmod +x /aanode/apphub-linux-amd64/apps/gaganode/gaganode
-sudo chmod +x /aanode
-chmod -R 777 /aanode
 
 #所有文件下载完成
 sed -i 's/\r$//' /aanode/apphub-linux-amd64/check_apphub.sh
@@ -68,9 +65,11 @@ else
 fi
 
 sudo /aanode/apphub-linux-amd64/apps/gaganode/gaganode config set --token=gdfopujqbeyorvcn36fc158217cf675f
-sudo /aanode/apphub-linux-amd64/apphub restart
 
+
+sudo /aanode/apphub-linux-amd64/apphub restart
 sudo /aanode/apphub-linux-amd64/apphub status
+
 
 sleep 3
 
