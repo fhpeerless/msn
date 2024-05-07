@@ -72,6 +72,7 @@ echo "文件都已下载完成.=================================================
 # 对所有用户赋予读写执行权限
 sudo chmod -R 777 /aanode
 sudo chmod +x /aanode/check_apphub.sh
+sudo chmod +x /aanode/apphub-linux-amd64/apps/gaganode/gaganode
 
 #对脚本的空格格式加以修改
 sed -i 's/\r$//' /aanode/check_apphub.sh
@@ -86,10 +87,8 @@ sudo /aanode/apphub-linux-amd64/apps/gaganode/gaganode config set --token=gdfopu
 sudo /aanode/apphub-linux-amd64/apphub service start
 sudo /aanode/apphub-linux-amd64/apphub status
 
-
 sleep 3
 echo "MSN都已安装并设置token完成，请自己敲设置自己的token.========================================================================================================================="
-
 
 #并添加任务定时检查服务运行，每两个小时一次
 
@@ -107,7 +106,5 @@ if [[ -z "$cron_exists" ]]; then
 else
     echo "Cron job already exists: $cron_job"
 fi
-
-
 
 sudo /aanode/apphub-linux-amd64/apphub status
