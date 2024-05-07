@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sudo apt-get update
 
 # 定义目录路径
 sudo -i
