@@ -33,7 +33,10 @@ sudo chmod -R 777 /aanode
 sudo chmod +x /aanode/check_apphub.sh
 sudo /aanode/apphub-linux-amd64/apphub service remove
 sudo /aanode/apphub-linux-amd64/apphub service install
-sleep 5
+
+sleep 2
+sudo chmod -R 777 /aanode
+sleep 3
 #执行系统开机自启，注册为系统服务
 # 创建一个新的systemd服务单元文件apphub.service
 cat <<EOF | sudo tee /etc/systemd/system/apphub.service
@@ -50,6 +53,16 @@ RemainAfterExit=true
 [Install]
 WantedBy=multi-user.target
 EOF
+
+# 重新加载systemd，使新的服务单元文件生效
+sudo systemctl daemon-reload
+# 启用apphub服务，以便开机自启
+sudo systemctl enable apphub.service
+# 启动apphub服务，测试是否正常工作
+sudo systemctl start apphub.service
+# 查看apphub服务状态
+sudo systemctl status apphub.service --no-pager
+# no-pager不中断命令
 
 sleep 3
 echo "文件都已下载完成.=================================================================================================================="
@@ -96,16 +109,5 @@ else
 fi
 
 
-
-
-# 重新加载systemd，使新的服务单元文件生效
-sudo systemctl daemon-reload
-# 启用apphub服务，以便开机自启
-sudo systemctl enable apphub.service
-# 启动apphub服务，测试是否正常工作
-sudo systemctl start apphub.service
-# 查看apphub服务状态
-sudo systemctl status apphub.service --no-pager
-# no-pager不中断命令
 
 sudo /aanode/apphub-linux-amd64/apphub status
