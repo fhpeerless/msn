@@ -27,8 +27,31 @@ cd /aanode
 sudo curl -o check_apphub.sh "http://note.youdao.com/yws/api/personal/file/WEB56b7ba0db76e723b07bb147ed1852933?method=download&inline=true&shareKey=40d46d68205caee9a411dc1f3fd847fc"
 sleep 3
 echo "文件都已下载完成.=================================================================================================================="
+# 赋予文件夹读写权限
+# 对所有用户赋予读写执行权限
+sudo chmod -R 777 /aanode
+sudo chmod +x /aanode/check_apphub.sh
+sudo /aanode/apphub-linux-amd64/apphub service remove
+sudo /aanode/apphub-linux-amd64/apphub service install
+#执行系统开机自启，注册为系统服务
+# 创建一个新的systemd服务单元文件apphub.service
+cat <<EOF | sudo tee /etc/systemd/system/apphub.service
 
+[Unit]
+Description=Start Apphub Service at Boot
+After=network.target
 
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'sudo /aanode/apphub-linux-amd64/apphub service start >> /aanode/123.txt 2>&1'
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sleep 3
+echo "文件都已下载完成.=================================================================================================================="
 
 
 # 赋予文件夹读写权限
@@ -72,22 +95,7 @@ else
 fi
 
 
-#执行系统开机自启
-# 创建一个新的systemd服务单元文件apphub.service
-cat <<EOF | sudo tee /etc/systemd/system/apphub.service
 
-[Unit]
-Description=Start Apphub Service at Boot
-After=network.target
-
-[Service]
-Type=oneshot
-ExecStart=/bin/sh -c 'sudo /aanode/apphub-linux-amd64/apphub service start >> /aanode/123.txt 2>&1'
-RemainAfterExit=true
-
-[Install]
-WantedBy=multi-user.target
-EOF
 
 # 重新加载systemd，使新的服务单元文件生效
 sudo systemctl daemon-reload
