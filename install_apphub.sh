@@ -33,6 +33,7 @@ sudo chmod -R 777 /aanode
 sudo chmod +x /aanode/check_apphub.sh
 sudo /aanode/apphub-linux-amd64/apphub service remove
 sudo /aanode/apphub-linux-amd64/apphub service install
+sleep 5
 #执行系统开机自启，注册为系统服务
 # 创建一个新的systemd服务单元文件apphub.service
 cat <<EOF | sudo tee /etc/systemd/system/apphub.service
