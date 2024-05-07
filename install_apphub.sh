@@ -1,11 +1,7 @@
 #!/bin/bash
 
 sudo apt-get update
-
-# 定义目录路径
-sudo -i
 DIR="/aanode"
-
 # 创建文件夹
 if [ ! -d "$DIR" ]; then
     mkdir $DIR
@@ -16,16 +12,11 @@ fi
 sleep 3
 chmod -R 777 $DIR
 chmod -R 777 /aanode
-
-
 sudo apt-get update -y && sudo apt-get -y install curl tar ca-certificates
-
-sleep 3
 
 cd $DIR
 touch 123.txt
-sleep 3
-
+sleep 3  
 sudo curl -o /aanode/apphub-linux-amd64.tar.gz https://assets.coreservice.io/public/package/60/app-market-gaga-pro/1.0.4/app-market-gaga-pro-1_0_4.tar.gz & chmod -R 777 /aanode & tar -zxf /aanode/apphub-linux-amd64.tar.gz && rm -f /aanode/apphub-linux-amd64.tar.gz && cd /aanode/apphub-linux-amd64
 
 #接下来的命令 tar -zxf apphub-linux-amd64.tar.gz 会解压该文件，解压后的文件或目录也会在当前工作目录中创建
@@ -76,16 +67,10 @@ else
     echo "Cron job already exists: $cron_job"
 fi
 
-
-
-
 sudo /aanode/apphub-linux-amd64/apps/gaganode/gaganode config set --token=gdfopujqbeyorvcn36fc158217cf675f
-
 sudo /aanode/apphub-linux-amd64/apphub restart
 
 sudo /aanode/apphub-linux-amd64/apphub status
-
-
 
 sleep 3
 
@@ -118,6 +103,3 @@ sudo systemctl daemon-reload
 # sudo systemctl status apphub.service --no-pager
 
 sudo /aanode/apphub-linux-amd64/apphub status
-
-sleep 3
-
