@@ -7,7 +7,7 @@ if [ ! -d "$DIR" ]; then
     mkdir $DIR
     echo "Directory $DIR created."
 else
-    echo "Directory $DIR already exists."
+    echo "文件夹 $DIR already exists."
 fi
 sleep 3
 chmod -R 777 $DIR
@@ -15,7 +15,6 @@ chmod -R 777 $DIR
 
 cd $DIR
 touch 123.txt
-sleep 3
 sudo curl -o /aanode/apphub-linux-amd64.tar.gz https://assets.coreservice.io/public/package/60/app-market-gaga-pro/1.0.4/app-market-gaga-pro-1_0_4.tar.gz
 chmod -R 777 /aanode
 tar -zxf /aanode/apphub-linux-amd64.tar.gz
@@ -24,9 +23,11 @@ cd /aanode/apphub-linux-amd64
 
 #接下来的命令 tar -zxf apphub-linux-amd64.tar.gz 会解压该文件，解压后的文件或目录也会在当前工作目录中创建
 
-sleep 3
 cd /aanode
 sudo curl -o check_apphub.sh "http://note.youdao.com/yws/api/personal/file/WEB56b7ba0db76e723b07bb147ed1852933?method=download&inline=true&shareKey=40d46d68205caee9a411dc1f3fd847fc"
+sleep 3
+echo "文件都已下载完成."
+
 
 
 
@@ -35,22 +36,25 @@ sudo curl -o check_apphub.sh "http://note.youdao.com/yws/api/personal/file/WEB56
 chmod -R 777 $DIR
 sudo chmod +x /aanode/apphub-linux-amd64/check_apphub.sh
 
-#所有文件下载完成
+#对脚本的空格格式加以修改
 sed -i 's/\r$//' /aanode/apphub-linux-amd64/check_apphub.sh
 
-sleep 3
-
-sudo /aanode/apphub-linux-amd64/apps/gaganode/gaganode config set --token=gdfopujqbeyorvcn36fc158217cf675f
 sudo /aanode/apphub-linux-amd64/apphub service remove
 sudo /aanode/apphub-linux-amd64/apphub service install
 sudo /aanode/apphub-linux-amd64/apphub service start
+sudo /aanode/apphub-linux-amd64/apphub status
+sudo /aanode/apphub-linux-amd64/apps/gaganode/gaganode config set --token=gdfopujqbeyorvcn36fc158217cf675f
+sudo /aanode/apphub-linux-amd64/apphub restart
 
+
+sleep 3
+echo "MSN都已安装并设置token完成，请自己敲设置自己的token."
 
 
 #并添加任务定时检查服务运行，每两个小时一次
 
 # Cron job规则，每两个小时执行一次
-cron_job="0 */2 * * * /aanode/apphub-linux-amd64/check_apphub.sh"
+cron_job="0 */2 * * * /aanode/check_apphub.sh"
 
 # 检查cron job是否已存在
 cron_exists=$(crontab -l | grep -F "$cron_job" || true)
@@ -64,18 +68,9 @@ else
     echo "Cron job already exists: $cron_job"
 fi
 
-sudo /aanode/apphub-linux-amd64/apps/gaganode/gaganode config set --token=gdfopujqbeyorvcn36fc158217cf675f
-
-
-sudo /aanode/apphub-linux-amd64/apphub restart
-sudo /aanode/apphub-linux-amd64/apphub status
-
-
-sleep 3
 
 #执行系统开机自启
 # 创建一个新的systemd服务单元文件apphub.service
-
 cat <<EOF | sudo tee /etc/systemd/system/apphub.service
 
 [Unit]
@@ -93,12 +88,12 @@ EOF
 
 # 重新加载systemd，使新的服务单元文件生效
 sudo systemctl daemon-reload
-
 # 启用apphub服务，以便开机自启
-#sudo systemctl enable apphub.service
+sudo systemctl enable apphub.service
 # 启动apphub服务，测试是否正常工作
-#sudo systemctl start apphub.service
+sudo systemctl start apphub.service
 # 查看apphub服务状态
-# sudo systemctl status apphub.service --no-pager
+sudo systemctl status apphub.service --no-pager
+# no-pager不中断命令
 
 sudo /aanode/apphub-linux-amd64/apphub status
