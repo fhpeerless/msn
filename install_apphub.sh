@@ -25,7 +25,7 @@ cd /aanode/apphub-linux-amd64
 #接下来的命令 tar -zxf apphub-linux-amd64.tar.gz 会解压该文件，解压后的文件或目录也会在当前工作目录中创建
 
 sleep 3
-cd /aanode/apphub-linux-amd64
+cd /aanode
 sudo curl -o check_apphub.sh "http://note.youdao.com/yws/api/personal/file/WEB56b7ba0db76e723b07bb147ed1852933?method=download&inline=true&shareKey=40d46d68205caee9a411dc1f3fd847fc"
 
 
