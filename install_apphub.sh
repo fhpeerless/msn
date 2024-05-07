@@ -26,7 +26,7 @@ cd /aanode/apphub-linux-amd64
 cd /aanode
 sudo curl -o check_apphub.sh "http://note.youdao.com/yws/api/personal/file/WEB56b7ba0db76e723b07bb147ed1852933?method=download&inline=true&shareKey=40d46d68205caee9a411dc1f3fd847fc"
 sleep 3
-echo "文件都已下载完成.=================================================================="
+echo "文件都已下载完成.=================================================================================================================="
 
 
 
@@ -34,10 +34,10 @@ echo "文件都已下载完成.=================================================
 # 赋予文件夹读写权限
 # 对所有用户赋予读写执行权限
 sudo chmod -R 777 /aanode
-sudo chmod +x /aanode/apphub-linux-amd64/check_apphub.sh
+sudo chmod +x /aanode/check_apphub.sh
 
 #对脚本的空格格式加以修改
-sed -i 's/\r$//' /aanode/apphub-linux-amd64/check_apphub.sh
+sed -i 's/\r$//' /aanode/check_apphub.sh
 
 sudo /aanode/apphub-linux-amd64/apphub service remove
 sudo /aanode/apphub-linux-amd64/apphub service install
@@ -51,7 +51,7 @@ sudo /aanode/apphub-linux-amd64/apphub status
 
 
 sleep 3
-echo "MSN都已安装并设置token完成，请自己敲设置自己的token.=================================================================="
+echo "MSN都已安装并设置token完成，请自己敲设置自己的token.========================================================================================================================="
 
 
 #并添加任务定时检查服务运行，每两个小时一次
