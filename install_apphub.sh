@@ -24,7 +24,6 @@ sudo curl -o check_apphub.sh "http://note.youdao.com/yws/api/personal/file/WEB56
 # 对所有用户赋予读写执行权限
 sudo chmod -R 777 /aanode
 sudo chmod +x /aanode/check_apphub.sh
-sudo chmod +x /aanode/apphub-linux-amd64/apps/gaganode/gaganode
 sleep 3
 echo "文件都已下载完成.=================================================================================================================="
 #对脚本的空格格式加以修改
