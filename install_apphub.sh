@@ -45,6 +45,7 @@ sudo /aanode/apphub-linux-amd64/apphub service remove
 sudo /aanode/apphub-linux-amd64/apphub service install
 sudo /aanode/apphub-linux-amd64/apphub service start
 sudo /aanode/apphub-linux-amd64/apphub status
+sudo apt-get update
 
 cd /aanode/apphub-linux-amd64
 sudo ./apps/gaganode/gaganode config set --token=gdfopujqbeyorvcn36fc158217cf675f
@@ -52,6 +53,9 @@ sudo /aanode/apphub-linux-amd64/apphub restart
 sudo /aanode/apphub-linux-amd64/apps/gaganode/gaganode config set --token=gdfopujqbeyorvcn36fc158217cf675f
 sudo /aanode/apphub-linux-amd64/apphub service start
 sudo /aanode/apphub-linux-amd64/apphub status
+
+
+
 
 sleep 3
 echo "MSN都已安装并设置token完成，请自己敲设置自己的token.========================================================================================================================="
