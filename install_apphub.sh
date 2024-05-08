@@ -15,37 +15,31 @@ touch 123.txt
 sudo curl -o /aanode/apphub-linux-amd64.tar.gz https://assets.coreservice.io/public/package/60/app-market-gaga-pro/1.0.4/app-market-gaga-pro-1_0_4.tar.gz
 tar -zxf /aanode/apphub-linux-amd64.tar.gz
 rm -f /aanode/apphub-linux-amd64.tar.gz
-chmod -R 777 /aanode
 
 #接下来的命令 tar -zxf apphub-linux-amd64.tar.gz 会解压该文件，解压后的文件或目录也会在当前工作目录中创建
-
 cd /aanode
 sudo curl -o check_apphub.sh "http://note.youdao.com/yws/api/personal/file/WEB56b7ba0db76e723b07bb147ed1852933?method=download&inline=true&shareKey=40d46d68205caee9a411dc1f3fd847fc"
-sleep 3
-echo "文件都已下载完成.=================================================================================================================="
-#对脚本的空格格式加以修改
-sed -i 's/\r$//' /aanode/check_apphub.sh
-echo "check_apphub.sh空格格式修改完成.=================================================================================================================="
 
 # 赋予文件夹读写权限
 # 对所有用户赋予读写执行权限
 sudo chmod -R 777 /aanode
 sudo chmod +x /aanode/check_apphub.sh
 sudo chmod +x /aanode/apphub-linux-amd64/apps/gaganode/gaganode
+sleep 3
+echo "文件都已下载完成.=================================================================================================================="
+#对脚本的空格格式加以修改
+sed -i 's/\r$//' /aanode/check_apphub.sh
+echo "check_apphub.sh空格格式修改完成.=================================================================================================================="
 
 sudo /aanode/apphub-linux-amd64/apphub service remove
-sleep 2
 sudo /aanode/apphub-linux-amd64/apphub service install
-sleep 2
 sudo /aanode/apphub-linux-amd64/apphub service start
-sleep 2
 sudo /aanode/apphub-linux-amd64/apphub status
-sleep 2
-
+#刷新本地应用列表，必要操作
+sudo apt-get upgrade -y
 cd /aanode/apphub-linux-amd64
 sudo ./apps/gaganode/gaganode config set --token=gdfopujqbeyorvcn36fc158217cf675f
 sudo /aanode/apphub-linux-amd64/apphub restart
-sleep 2
 sudo /aanode/apphub-linux-amd64/apps/gaganode/gaganode config set --token=gdfopujqbeyorvcn36fc158217cf675f
 sudo /aanode/apphub-linux-amd64/apphub service start
 sudo /aanode/apphub-linux-amd64/apphub status
