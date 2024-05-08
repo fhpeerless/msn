@@ -41,8 +41,7 @@ sudo /aanode/apphub-linux-amd64/apphub service start
 sleep 2
 sudo /aanode/apphub-linux-amd64/apphub status
 sleep 2
-#sudo apt-get upgrade -y
-#sleep 2
+
 cd /aanode/apphub-linux-amd64
 sudo ./apps/gaganode/gaganode config set --token=gdfopujqbeyorvcn36fc158217cf675f
 sudo /aanode/apphub-linux-amd64/apphub restart
