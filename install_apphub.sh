@@ -13,13 +13,12 @@ sleep 3
 chmod -R 777 /aanode
 
 
-cd $DIR
+cd /aanode
 touch 123.txt
 sudo curl -o /aanode/apphub-linux-amd64.tar.gz https://assets.coreservice.io/public/package/60/app-market-gaga-pro/1.0.4/app-market-gaga-pro-1_0_4.tar.gz
 chmod -R 777 /aanode
-tar -zxf /aanode/apphub-linux-amd64.tar.gz
+# tar -zxf /aanode/apphub-linux-amd64.tar.gz
 rm -f /aanode/apphub-linux-amd64.tar.gz
-cd /aanode/apphub-linux-amd64
 
 #接下来的命令 tar -zxf apphub-linux-amd64.tar.gz 会解压该文件，解压后的文件或目录也会在当前工作目录中创建
 
@@ -109,5 +108,4 @@ sudo systemctl status apphub.service --no-pager
 # no-pager不中断命令
 sleep 3
 echo "MSN添加开机运行成功.========================================================================================================================="
-
 sudo /aanode/apphub-linux-amd64/apphub status
