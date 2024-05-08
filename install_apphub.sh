@@ -43,8 +43,7 @@ sudo /aanode/apphub-linux-amd64/apps/gaganode/gaganode config set --token=gdfopu
 sudo /aanode/apphub-linux-amd64/apphub service start
 sudo /aanode/apphub-linux-amd64/apphub status
 
-sleep 3
-echo "MSN都已安装并设置token完成，请自己敲设置自己的token.========================================================================================================================="
+echo "MSN都已安装完成.========================================================================================================================="
 
 #并添加任务定时检查服务运行，每两个小时一次
 
@@ -63,8 +62,6 @@ else
     echo "Cron job already exists: $cron_job"
 fi
 
-
-sleep 3
 echo "MSN添加每小时保持运行成功.========================================================================================================================="
 
 #执行系统开机自启，注册为系统服务
@@ -93,6 +90,5 @@ sudo systemctl start apphub.service
 # 查看apphub服务状态
 sudo systemctl status apphub.service --no-pager
 # no-pager不中断命令
-sleep 3
 echo "MSN添加开机运行成功.========================================================================================================================="
 sudo /aanode/apphub-linux-amd64/apphub status
