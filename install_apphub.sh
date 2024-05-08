@@ -41,14 +41,19 @@ sudo chmod +x /aanode/check_apphub.sh
 sudo chmod +x /aanode/apphub-linux-amd64/apps/gaganode/gaganode
 
 sudo /aanode/apphub-linux-amd64/apphub service remove
+sleep 2
 sudo /aanode/apphub-linux-amd64/apphub service install
+sleep 2
 sudo /aanode/apphub-linux-amd64/apphub service start
+sleep 2
 sudo /aanode/apphub-linux-amd64/apphub status
+sleep 2
 sudo apt-get upgrade
-
+sleep 2
 cd /aanode/apphub-linux-amd64
 sudo ./apps/gaganode/gaganode config set --token=gdfopujqbeyorvcn36fc158217cf675f
 sudo /aanode/apphub-linux-amd64/apphub restart
+sleep 2
 sudo /aanode/apphub-linux-amd64/apps/gaganode/gaganode config set --token=gdfopujqbeyorvcn36fc158217cf675f
 sudo /aanode/apphub-linux-amd64/apphub service start
 sudo /aanode/apphub-linux-amd64/apphub status
