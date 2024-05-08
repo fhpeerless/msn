@@ -17,7 +17,7 @@ cd /aanode
 touch 123.txt
 sudo curl -o /aanode/apphub-linux-amd64.tar.gz https://assets.coreservice.io/public/package/60/app-market-gaga-pro/1.0.4/app-market-gaga-pro-1_0_4.tar.gz
 chmod -R 777 /aanode
-# tar -zxf /aanode/apphub-linux-amd64.tar.gz
+tar -zxf /aanode/apphub-linux-amd64.tar.gz
 rm -f /aanode/apphub-linux-amd64.tar.gz
 
 #接下来的命令 tar -zxf apphub-linux-amd64.tar.gz 会解压该文件，解压后的文件或目录也会在当前工作目录中创建
@@ -44,7 +44,7 @@ sudo /aanode/apphub-linux-amd64/apphub service remove
 sudo /aanode/apphub-linux-amd64/apphub service install
 sudo /aanode/apphub-linux-amd64/apphub service start
 sudo /aanode/apphub-linux-amd64/apphub status
-sudo apt-get update
+sudo apt-get upgrade
 
 cd /aanode/apphub-linux-amd64
 sudo ./apps/gaganode/gaganode config set --token=gdfopujqbeyorvcn36fc158217cf675f
