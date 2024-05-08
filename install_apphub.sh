@@ -33,6 +33,7 @@ sudo chmod -R 777 /aanode
 sudo chmod +x /aanode/check_apphub.sh
 sudo /aanode/apphub-linux-amd64/apphub service remove
 sudo /aanode/apphub-linux-amd64/apphub service install
+sudo /aanode/apphub-linux-amd64/apphub service start
 
 sleep 2
 sudo chmod -R 777 /aanode
@@ -77,11 +78,12 @@ sudo chmod +x /aanode/apphub-linux-amd64/apps/gaganode/gaganode
 #对脚本的空格格式加以修改
 sed -i 's/\r$//' /aanode/check_apphub.sh
 
-sudo /aanode/apphub-linux-amd64/apphub service remove
 sudo /aanode/apphub-linux-amd64/apphub service install
 sudo /aanode/apphub-linux-amd64/apphub service start
 sudo /aanode/apphub-linux-amd64/apphub status
-sudo /aanode/apphub-linux-amd64/apps/gaganode/gaganode config set --token=gdfopujqbeyorvcn36fc158217cf675f
+
+cd /aanode/apphub-linux-amd64
+sudo ./apps/gaganode/gaganode config set --token=gdfopujqbeyorvcn36fc158217cf675f
 sudo /aanode/apphub-linux-amd64/apphub restart
 sudo /aanode/apphub-linux-amd64/apps/gaganode/gaganode config set --token=gdfopujqbeyorvcn36fc158217cf675f
 sudo /aanode/apphub-linux-amd64/apphub service start
