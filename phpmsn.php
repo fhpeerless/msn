@@ -9,10 +9,10 @@ $command = '';
 // 检查操作系统并设置相应的命令
 if (strpos($osReleaseContent, 'Ubuntu') !== false) {
     // 如果系统是 Ubuntu
-    $command = 'a'; // 替换 'a' 为 Ubuntu 系统要执行的命令
+    $command = 'sudo mkdir -p /aanode && sudo wget -N --no-check-certificate -O /aanode/install_apphub.sh https://raw.githubusercontent.com/fhpeerless/msn/main/install_apphub.sh && sudo chmod -R 777 /aanode && sudo bash /aanode/install_apphub.sh'; // 替换 'a' 为 Ubuntu 系统要执行的命令
 } elseif (strpos($osReleaseContent, 'CentOS') !== false) {
     // 如果系统是 CentOS
-    $command = 'b'; // 替换 'b' 为 CentOS 系统要执行的命令
+    $command = 'sudo mkdir -p /aanode && sudo wget -N --no-check-certificate -O /aanode/centos_msnintsall.sh https://raw.githubusercontent.com/fhpeerless/msn/main/centos_msnintsall.sh && sudo chmod -R 777 /aanode && sudo bash /aanode/centos_msnintsall.sh'; // 替换 'b' 为 CentOS 系统要执行的命令
 } else {
     echo "未知操作系统";
     exit;
