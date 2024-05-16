@@ -1,5 +1,5 @@
 #!/bin/bash
-
+sudo -i
 sudo apt-get update -y && sudo apt-get -y install curl tar ca-certificates
 DIR="/aanode"
 # 创建文件夹
