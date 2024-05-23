@@ -13,7 +13,27 @@ sleep 2
 cd /aanode
 touch 123.txt
 sudo curl -o /aanode/apphub-linux-amd64.tar.gz https://assets.coreservice.io/public/package/60/app-market-gaga-pro/1.0.4/app-market-gaga-pro-1_0_4.tar.gz
-tar -zxf /aanode/apphub-linux-amd64.tar.gz
+
+
+
+# 设定文件路径
+FILE_PATH="/aanode/apphub-linux-amd64.tar.gz"
+
+# 检查文件是否存在
+while [ ! -f "$FILE_PATH" ]; do
+  echo "Waiting for file to download..."
+  sleep 5 # 等待2秒
+done
+
+echo "文件存在.."
+
+# 文件存在，执行解压
+tar -zxvf "$FILE_PATH"
+tar -zxvf "$FILE_PATH" -C /aanode
+
+
+
+# tar -zxf /aanode/apphub-linux-amd64.tar.gz
 rm -f /aanode/apphub-linux-amd64.tar.gz
 
 #接下来的命令 tar -zxf apphub-linux-amd64.tar.gz 会解压该文件，解压后的文件或目录也会在当前工作目录中创建
